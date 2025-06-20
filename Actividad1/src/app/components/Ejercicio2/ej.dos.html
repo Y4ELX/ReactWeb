@@ -1,21 +1,19 @@
-<!-- Botón para abrir el formulario -->
- <div class="d-grid gap-2">
-  <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#datos" (click)="abrirFormulario()">
+<div class="d-grid gap-2 my-3" style="width: max-content;">
+  <button class="btn btn-outline-success btn-sm" data-bs-toggle="modal" data-bs-target="#datos" (click)="abrirFormulario()">
     Abrir Formulario
   </button>
 </div>
 
 <div class="container">
-  <div class="my-3"></div>
 
-  <div class="d-flex align-items-start gap-2 flex-wrap">
+  <div class="d-flex align-items-center gap-3 flex-wrap my-3">
     <select class="form-select w-auto" [(ngModel)]="filtradoEstatus">
       <option value="Pendiente Revision">Pendiente de Revisión</option>
       <option value="Aprobada">Aprobada</option>
       <option value="Rechazada">Rechazada</option>
     </select>
 
-    <button class="btn btn-outline-primary" (click)="filtrarPeliculas()">
+    <button class="btn btn-outline-success" (click)="filtrarPeliculas()">
       <i class="bi bi-funnel"></i> Aplicar Filtro
     </button>
 
@@ -24,32 +22,25 @@
     </button>
   </div>
 
-  <div class="my-3"></div>
 </div>
 
-<!-- Modal -->
 <div class="modal fade" id="datos" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-xl modal-dialog-centered">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
     <div class="modal-content">
 
-      <!-- Encabezado -->
-      <div class="modal-header">
-        <h1 class="modal-title fs-5">Formulario para selección de película</h1>
-        <button type="button" class="btn-close" id="cerrarModal" data-bs-dismiss="modal" aria-label="Close"></button>
+      <div class="modal-header bg-success text-white">
+        <h5 class="modal-title">Formulario para selección de película</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
       </div>
 
-      <!-- Cuerpo del modal -->
       <div class="modal-body row g-3 px-4">
-
-        <!-- Título -->
-        <label class="col-form-label col-2">Película</label>
-        <div class="col-6">
-          <input type="text" class="form-control" placeholder="Titanic" [(ngModel)]="peliculaModal.titulo">
+        <label class="col-form-label col-3">Película</label>
+        <div class="col-9">
+          <input type="text" class="form-control" placeholder="Star wars" [(ngModel)]="peliculaModal.titulo">
         </div>
 
-        <!-- Estatus -->
-        <label class="col-form-label col-2">Estatus</label>
-        <div class="col-2">
+        <label class="col-form-label col-3">Estatus</label>
+        <div class="col-3">
           <select class="form-select" [(ngModel)]="peliculaModal.estatus" [disabled]="!peliculaModal.edicion">
             <option value="Pendiente Revision">Pendiente Revisión</option>
             <option value="Aprobada">Aprobada</option>
@@ -57,21 +48,18 @@
           </select>
         </div>
 
-        <!-- Horario -->
-        <label class="col-form-label col-2">Horario</label>
-        <div class="col-2">
+        <label class="col-form-label col-3">Horario</label>
+        <div class="col-3">
           <input type="time" class="form-control" [(ngModel)]="peliculaModal.horario">
         </div>
 
-        <!-- Personas -->
-        <label class="col-form-label col-2">Cantidad de Personas</label>
-        <div class="col-2">
+        <label class="col-form-label col-3">Cantidad de Personas</label>
+        <div class="col-3">
           <input type="number" class="form-control" placeholder="4" [(ngModel)]="peliculaModal.personas">
         </div>
 
-        <!-- Sala -->
-        <label class="col-form-label col-2">Sala</label>
-        <div class="col-2">
+        <label class="col-form-label col-3">Sala</label>
+        <div class="col-3">
           <select class="form-select" [(ngModel)]="peliculaModal.sala">
             <option value="1">Sala 1</option>
             <option value="2">Sala 2</option>
@@ -81,9 +69,8 @@
           </select>
         </div>
 
-        <!-- Clasificación -->
-        <label class="col-form-label col-2">Clasificación</label>
-        <div class="col-2">
+        <label class="col-form-label col-3">Clasificación</label>
+        <div class="col-3">
           <select class="form-select" [(ngModel)]="peliculaModal.clasificacion">
             <option value="AA">AA</option>
             <option value="A">A</option>
@@ -93,61 +80,57 @@
           </select>
         </div>
 
-        <!-- Duración -->
-        <label class="col-form-label col-2">Duración</label>
-        <div class="col-2">
+        <label class="col-form-label col-3">Duración</label>
+        <div class="col-3">
           <div class="input-group">
             <input type="number" class="form-control" placeholder="120" [(ngModel)]="peliculaModal.duracion">
             <span class="input-group-text">min</span>
           </div>
         </div>
 
-        <!-- Descripción -->
         <div class="col-12">
           <div class="form-floating">
-            <textarea class="form-control" id="floatingTextarea" placeholder="Descripción"
-              [(ngModel)]="peliculaModal.descripcion"></textarea>
+            <textarea class="form-control" id="floatingTextarea" placeholder="Descripción" [(ngModel)]="peliculaModal.descripcion"></textarea>
             <label for="floatingTextarea">Descripción</label>
           </div>
         </div>
       </div>
 
-      <!-- Footer del modal -->
       <div class="modal-footer">
         <button class="btn btn-danger" *ngIf="peliculaModal.edicion" (click)="eliminarPelicula(peliculaModal)">
-          <i class="bi bi-trash3"></i>
+          <i class="bi bi-trash3"></i> Eliminar
         </button>
         <button class="btn btn-success" *ngIf="!peliculaModal.edicion" (click)="registrarPelicula()">
           <i class="bi bi-floppy"></i> Registrar Película
         </button>
         <button class="btn btn-success" *ngIf="peliculaModal.edicion" (click)="editarPelicula()">
-          Guardar cambios de película
+          Guardar cambios
         </button>
       </div>
     </div>
   </div>
 </div>
 
-
-<table class="table table-bordered">
-  <thead class="table-dark">
+<table class="table table-hover table-bordered mt-3 mx-auto" style="max-width: 90%;">
+  <thead class="table-secondary">
     <tr>
-      <th scope="col">Película</th>
-      <th scope="col">Horario</th>
-      <th scope="col">Estatus</th>
-      <th scope="col">Personas</th>
-      <th scope="col">Sala</th>
-      <th scope="col">Clasificación</th>
-      <th scope="col">Duración</th>
-      <th scope="col">Descripción</th>
-      <th scope="col">Acciones</th>
+      <th>Película</th>
+      <th>Horario</th>
+      <th>Estatus</th>
+      <th>Personas</th>
+      <th>Sala</th>
+      <th>Clasificación</th>
+      <th>Duración</th>
+      <th>Descripción</th>
+      <th>Acciones</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let pelicula of listaPeliculas; let i = index" 
+    <tr *ngFor="let pelicula of listaPeliculas"
         [ngClass]="{
-          'aprobada': pelicula.estatus === 'Aprobada',
-          'rechazada': pelicula.estatus === 'Rechazada'
+          'table-success': pelicula.estatus === 'Aprobada',
+          'table-danger': pelicula.estatus === 'Rechazada',
+          'table-warning': pelicula.estatus === 'Pendiente Revision'
         }"
         [attr.data-estatus]="pelicula.estatus">
       <td>{{ pelicula.titulo }}</td>
@@ -156,14 +139,14 @@
       <td>{{ pelicula.personas }}</td>
       <td>{{ pelicula.sala }}</td>
       <td>{{ pelicula.clasificacion }}</td>
-      <td>{{ (pelicula.duracion/60).toFixed(2) }} Hrs</td>
+      <td>{{ (pelicula.duracion / 60).toFixed(2) }} Hrs</td>
       <td>{{ pelicula.descripcion }}</td>
-      <td>
-        <button class="btn btn-warning btn-sm me-2" data-bs-toggle="modal" data-bs-target="#datos" (click)="edicionPelicula(pelicula)" title="Editar">
-          <i class="bi bi-pencil-square"></i>
+      <td class="d-flex justify-content-center">
+        <button class="btn btn-warning btn-sm me-2 text-white" data-bs-toggle="modal" data-bs-target="#datos" (click)="edicionPelicula(pelicula)" title="Editar">
+          Editar
         </button>
-        <button class="btn btn-danger btn-sm me-2" (click)="invocarAlertaEliminar(pelicula)" title="Eliminar">
-          <i class="bi bi-trash3"></i>
+        <button class="btn btn-danger btn-sm me-2 text-white" (click)="eliminarPelicula(pelicula)" title="Eliminar">
+          Borrar
         </button>
       </td>
     </tr>

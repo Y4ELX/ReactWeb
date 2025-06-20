@@ -1,7 +1,66 @@
-.aprobada td {
-  background-color: rgb(0, 255, 60) !important; /* Verde claro */
+
+
+.btn-outline-success {
+  color: #80d27e;
+  border-color: #80d27e;
+}
+.btn-outline-success:hover {
+  background-color: #80d27e;
+  color: #121212;
 }
 
-.rechazada td {
-  background-color: #e5192a !important; /* Rojo claro */
+.btn-outline-danger {
+  color: #f66e6e;
+  border-color: #f66e6e;
+}
+.btn-outline-danger:hover {
+  background-color: #f66e6e;
+  color: #121212;
+}
+
+.btn-warning {
+  background-color: #d4a500;
+  color: #121212;
+}
+.btn-warning:hover {
+  background-color: #b38e00;
+}
+
+.modal-header.bg-success {
+  background-color: #2a6f2a !important;
+}
+
+table {
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+  max-width: 1100px;
+  box-shadow: 0 0 10px #000a;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.table-success {
+  background-color: #335533 !important;
+}
+.table-danger {
+  background-color: #553333 !important;
+}
+.table-warning {
+  background-color: #665533 !important;
+}
+
+.btn-sm.me-2 {
+  color: #121212;
+}
+
+tbody {
+  max-height: 350px;
+  overflow-y: auto;
+  display: block;
+}
+thead, tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
 }
